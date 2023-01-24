@@ -12,7 +12,8 @@ export const Overlay = styled(Dialog.Overlay)`
 `
 
 export const Content = styled(Dialog.Content)`
-  min-width: 32rem;
+  max-width: 32rem;
+  width: 100%;
   border-radius: 6px;
   padding: 2.5rem 3rem;
   background: ${(props) => props.theme['gray-800']};
@@ -21,6 +22,11 @@ export const Content = styled(Dialog.Content)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 862px) {
+    transform: translate(-50%, 0%);
+    bottom: 0;
+  }
 
   form {
     margin-top: 2rem;

@@ -29,6 +29,42 @@ export const TransactionsTable = styled.table`
   }
 `
 
+export const TransactionsTableMobile = styled.table`
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  margin-top: 1.5rem;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    margin-bottom: 12px;
+    p {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 160%;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 160%;
+      color: ${(props) => props.theme['gray-500']};
+
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
+  }
+`
+
 interface PriceHighlightProps {
   variant: 'income' | 'outcome'
 }
@@ -38,4 +74,10 @@ export const PriceHighlight = styled.span<PriceHighlightProps>`
     props.variant === 'income'
       ? props.theme['green-300']
       : props.theme['red-300']};
+
+  @media screen and (max-width: 838px) {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 160%;
+  }
 `

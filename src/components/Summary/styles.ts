@@ -11,6 +11,8 @@ export const SummaryContainer = styled.section`
   gap: 2rem;
 
   margin-top: -5rem;
+
+  overflow-x: scroll;
 `
 interface SummaryCardProps {
   variant?: 'green'
