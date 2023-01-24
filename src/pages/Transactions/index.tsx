@@ -1,4 +1,5 @@
 import { Calendar, Tag } from 'phosphor-react'
+import { useQuery } from 'react-query'
 import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
@@ -13,9 +14,13 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const transactions = useContextSelector(
+  const fetchTransactionQuery = useContextSelector(
     TransactionsContext,
-    (context) => context.transactions,
+    (context) => context.fetchTransactionQuery,
+  )
+
+  const { data, isLoading } = useQuery('transactions', () =>
+    fetchTransactionQuery(),
   )
 
   const { innerWidth } = window
@@ -27,10 +32,11 @@ export function Transactions() {
 
       <TransactionsContainer>
         <SearchForm />
+        {isLoading && 'carregando'}
         <TransactionsTable>
           {innerWidth > 862 ? (
             <tbody>
-              {transactions.map((transaction) => (
+              {data?.map((transaction) => (
                 <tr key={transaction.id}>
                   <td width="50%">{transaction.description}</td>
                   <td>
@@ -49,7 +55,7 @@ export function Transactions() {
           ) : (
             <TransactionsTableMobile>
               <tbody>
-                {transactions.map((transaction) => (
+                {data?.map((transaction) => (
                   <tr key={transaction.id}>
                     <td width="50%">
                       <header>
