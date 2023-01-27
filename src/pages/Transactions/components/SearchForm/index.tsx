@@ -5,8 +5,7 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
 import { useContextSelector } from 'use-context-selector'
-import { QueryClient, useMutation } from 'react-query'
-import { useState } from 'react'
+import { useMutation, useQueryClient } from 'react-query'
 
 const searchSchema = z.object({
   query: z.string(),
@@ -15,11 +14,18 @@ const searchSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchSchema>
 
 export function SearchForm() {
-  const [query, setQuery] = useState('')
   const fetchTransactions = useContextSelector(
     TransactionsContext,
     (context) => context.fetchTransactionQuery,
   )
+
+  const queryClient = useQueryClient()
+
+  const { mutate } = useMutation((query: string) => fetchTransactions(query), {
+    onSuccess: (data) => {
+      queryClient.setQueryData('transactions', data)
+    },
+  })
 
   const {
     register,
@@ -30,18 +36,8 @@ export function SearchForm() {
   })
 
   async function handleSearchTransactions({ query }: SearchFormInputs) {
-    setQuery(query)
-    mutate()
+    mutate(query)
   }
-
-  const queryClient = new QueryClient()
-
-  const { mutate } = useMutation(() => fetchTransactions(query), {
-    onSuccess: () => {
-      queryClient.invalidateQueries('transactions')
-      console.log('d')
-    },
-  })
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>

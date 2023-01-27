@@ -19,7 +19,6 @@ interface createTransactionsInput {
 }
 
 interface TransactionsContextTypes {
-  transactions: TransactionsType[]
   createTransactions: (data: createTransactionsInput) => Promise<void>
   fetchTransactionQuery: (query?: string) => Promise<TransactionsType[]>
 }
@@ -31,8 +30,6 @@ interface TransactionsProviderProps {
 }
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
-  const [transactions, setTransaction] = useState<TransactionsType[]>([])
-
   const fetchTransactionQuery = useCallback(
     async (query?: string): Promise<TransactionsType[]> => {
       const response = await api.get<TransactionsType[]>('transactions', {
@@ -58,8 +55,6 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         type,
         createdAt: new Date(),
       })
-
-      setTransaction((state) => [response.data, ...state])
     },
     [],
   )
@@ -71,7 +66,6 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   return (
     <TransactionsContext.Provider
       value={{
-        transactions,
         createTransactions,
         fetchTransactionQuery,
       }}

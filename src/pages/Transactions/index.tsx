@@ -19,17 +19,18 @@ export function Transactions() {
     (context) => context.fetchTransactionQuery,
   )
 
-  const { data, isLoading } = useQuery('transactions', () =>
+  const { data, isLoading, isSuccess } = useQuery('transactions', () =>
     fetchTransactionQuery(),
   )
 
   const { innerWidth } = window
 
+  console.log('rederizou')
+
   return (
     <div>
       <Header />
-      <Summary />
-
+      {isSuccess && <Summary />}
       <TransactionsContainer>
         <SearchForm />
         {isLoading && 'carregando'}
