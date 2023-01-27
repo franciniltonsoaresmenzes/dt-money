@@ -20,6 +20,8 @@ export function Transactions() {
 
   const { innerWidth } = window
 
+  console.log('re')
+
   return (
     <div>
       <Header />
