@@ -12,6 +12,7 @@ import {
 } from './styles'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { useContextSelector } from 'use-context-selector'
+import { useMutation, useQueryClient } from 'react-query'
 
 const NewTransactionFormSchema = z.object({
   description: z.string(),
@@ -41,9 +42,18 @@ export function NewTransactionModal() {
     },
   })
 
+  const queryClient = useQueryClient()
+
+  const { mutate } = useMutation(
+    (data: NewTransactionFormInputs) => createTransactions(data),
+    {
+      onSuccess: () => queryClient.invalidateQueries(),
+    },
+  )
+
   async function handleCreateNewTransations(data: NewTransactionFormInputs) {
     const { description, category, price, type } = data
-    createTransactions({ description, price, category, type })
+    mutate({ description, price, category, type })
 
     reset()
   }

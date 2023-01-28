@@ -1,5 +1,5 @@
-import { Calendar, Tag } from 'phosphor-react'
-import { useQuery } from 'react-query'
+import { Calendar, CaretLeft, CaretRight, Tag } from 'phosphor-react'
+import { useQuery, useQueryClient } from 'react-query'
 import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
@@ -8,9 +8,14 @@ import { dateFormatter, priceFormatter } from '../../utils/formatter'
 import { SearchForm } from './components/SearchForm'
 import {
   PriceHighlight,
+  TableGroupNumber,
+  TablePaginationNumber,
   TransactionsContainer,
   TransactionsTable,
+  TransactionsTableFooter,
   TransactionsTableMobile,
+  TransactionsTableToggleGroup,
+  TransactionsTableToolbarButton,
 } from './styles'
 
 export function Transactions() {
@@ -19,13 +24,15 @@ export function Transactions() {
     (context) => context.fetchTransactionQuery,
   )
 
-  const { data, isLoading, isSuccess } = useQuery('transactions', () =>
-    fetchTransactionQuery(),
+  const { data, isLoading, isSuccess } = useQuery(
+    'todos',
+    () => fetchTransactionQuery(''),
+    {
+      refetchInterval: 60000,
+    },
   )
 
   const { innerWidth } = window
-
-  console.log('rederizou')
 
   return (
     <div>
@@ -85,6 +92,22 @@ export function Transactions() {
             </TransactionsTableMobile>
           )}
         </TransactionsTable>
+
+        <TransactionsTableFooter>
+          <TransactionsTableToggleGroup aria-label="Tool bar de paginação">
+            <TransactionsTableToolbarButton disabled>
+              <CaretLeft size={24} weight="bold" />
+            </TransactionsTableToolbarButton>
+            <TableGroupNumber defaultValue="1" type="single">
+              <TablePaginationNumber value="1">1</TablePaginationNumber>
+              <TablePaginationNumber value="2">2</TablePaginationNumber>
+              <TablePaginationNumber value="3">3</TablePaginationNumber>
+            </TableGroupNumber>
+            <TransactionsTableToolbarButton>
+              <CaretRight size={24} weight="bold" />
+            </TransactionsTableToolbarButton>
+          </TransactionsTableToggleGroup>
+        </TransactionsTableFooter>
       </TransactionsContainer>
     </div>
   )

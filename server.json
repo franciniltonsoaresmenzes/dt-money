@@ -31,6 +31,94 @@
       "category": "Educação",
       "price": 1980,
       "createdAt": "2023-01-13T23:59:46.529Z"
+    },
+    {
+      "description": "Salario",
+      "category": "Salario",
+      "price": 15000,
+      "type": "income",
+      "createdAt": "2023-01-28T18:29:03.923Z",
+      "id": 5
+    },
+    {
+      "description": "Salario",
+      "category": "Salario",
+      "price": 1500,
+      "type": "income",
+      "createdAt": "2023-01-28T18:30:27.553Z",
+      "id": 6
+    },
+    {
+      "description": "Comida",
+      "category": "Alimento",
+      "price": 80,
+      "type": "outcome",
+      "createdAt": "2023-01-28T18:31:52.248Z",
+      "id": 7
+    },
+    {
+      "description": "Aula",
+      "category": "A",
+      "price": 1800,
+      "type": "outcome",
+      "createdAt": "2023-01-28T18:32:21.312Z",
+      "id": 8
+    },
+    {
+      "description": "A",
+      "category": "a",
+      "price": 1,
+      "type": "outcome",
+      "createdAt": "2023-01-28T18:34:11.995Z",
+      "id": 9
+    },
+    {
+      "description": "b",
+      "category": "b",
+      "price": 1,
+      "type": "income",
+      "createdAt": "2023-01-28T18:34:37.951Z",
+      "id": 10
+    },
+    {
+      "description": "x",
+      "category": "x",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-28T18:35:36.701Z",
+      "id": 11
+    },
+    {
+      "description": "asd",
+      "category": "as",
+      "price": 12,
+      "type": "outcome",
+      "createdAt": "2023-01-28T18:35:52.816Z",
+      "id": 12
+    },
+    {
+      "description": "asd",
+      "category": "sd",
+      "price": 23,
+      "type": "income",
+      "createdAt": "2023-01-28T18:36:02.493Z",
+      "id": 13
+    },
+    {
+      "description": "sd",
+      "category": "asd",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-28T18:36:21.948Z",
+      "id": 14
+    },
+    {
+      "description": "sqd",
+      "category": "asd",
+      "price": 12,
+      "type": "outcome",
+      "createdAt": "2023-01-28T18:38:30.158Z",
+      "id": 15
     }
   ]
 }

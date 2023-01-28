@@ -8,7 +8,7 @@ export function useSummary() {
     TransactionsContext,
     (context) => context.fetchTransactionQuery,
   )
-  const { data } = useQuery('transactions', () => fetchTransactionQuery())
+  const { data } = useQuery('todos', () => fetchTransactionQuery())
 
   const summary = useMemo(
     () =>

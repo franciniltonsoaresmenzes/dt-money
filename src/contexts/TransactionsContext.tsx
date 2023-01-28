@@ -1,4 +1,4 @@
-import { ReactNode, useState, useCallback, useEffect } from 'react'
+import { ReactNode, useCallback, useEffect } from 'react'
 import { createContext } from 'use-context-selector'
 import { api } from '../lib/axios'
 
@@ -20,7 +20,11 @@ interface createTransactionsInput {
 
 interface TransactionsContextTypes {
   createTransactions: (data: createTransactionsInput) => Promise<void>
-  fetchTransactionQuery: (query?: string) => Promise<TransactionsType[]>
+  fetchTransactionQuery: (
+    query?: string,
+    page?: number,
+    limit?: number,
+  ) => Promise<TransactionsType[]>
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextTypes)
@@ -31,12 +35,18 @@ interface TransactionsProviderProps {
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const fetchTransactionQuery = useCallback(
-    async (query?: string): Promise<TransactionsType[]> => {
+    async (
+      query?: string,
+      page?: number,
+      limit?: number,
+    ): Promise<TransactionsType[]> => {
       const response = await api.get<TransactionsType[]>('transactions', {
         params: {
           _sort: 'createdAt',
           _order: 'desc',
           q: query,
+          _page: page,
+          _limit: limit,
         },
       })
 
@@ -48,7 +58,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     async (data: createTransactionsInput) => {
       const { description, category, price, type } = data
 
-      const response = await api.post('transactions', {
+      await api.post('transactions', {
         description,
         category,
         price,
