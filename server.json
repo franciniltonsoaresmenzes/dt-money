@@ -119,6 +119,54 @@
       "type": "outcome",
       "createdAt": "2023-01-28T18:38:30.158Z",
       "id": 15
+    },
+    {
+      "description": "Salario",
+      "category": "as",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-28T21:30:09.557Z",
+      "id": 16
+    },
+    {
+      "description": "Salario",
+      "category": "as",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-28T21:36:05.266Z",
+      "id": 17
+    },
+    {
+      "description": "12",
+      "category": "as",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-28T22:46:47.044Z",
+      "id": 18
+    },
+    {
+      "description": "12",
+      "category": "as",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-28T22:47:53.894Z",
+      "id": 19
+    },
+    {
+      "description": "Salario",
+      "category": "e",
+      "price": 1233,
+      "type": "income",
+      "createdAt": "2023-01-28T23:12:45.268Z",
+      "id": 20
+    },
+    {
+      "description": "asd12",
+      "category": "a",
+      "price": 1221,
+      "type": "income",
+      "createdAt": "2023-01-29T00:27:08.862Z",
+      "id": 21
     }
   ]
 }

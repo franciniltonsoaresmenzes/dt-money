@@ -54,6 +54,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     },
     [],
   )
+
   const createTransactions = useCallback(
     async (data: createTransactionsInput) => {
       const { description, category, price, type } = data

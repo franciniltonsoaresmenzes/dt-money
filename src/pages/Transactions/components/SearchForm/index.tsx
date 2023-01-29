@@ -5,7 +5,8 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
 import { useContextSelector } from 'use-context-selector'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
+import { queryClient } from '../../../../lib/reactQuery'
 
 const searchSchema = z.object({
   query: z.string(),
@@ -19,13 +20,14 @@ export function SearchForm() {
     (context) => context.fetchTransactionQuery,
   )
 
-  const queryClient = useQueryClient()
-
-  const { mutate } = useMutation((query: string) => fetchTransactions(query), {
-    onSuccess: (data) => {
-      queryClient.setQueryData('transactions', data)
+  const { mutateAsync } = useMutation(
+    (query: string) => fetchTransactions(query),
+    {
+      onSuccess: (data) => {
+        queryClient.setQueryData(['todos', 1], data)
+      },
     },
-  })
+  )
 
   const {
     register,
@@ -36,7 +38,9 @@ export function SearchForm() {
   })
 
   async function handleSearchTransactions({ query }: SearchFormInputs) {
-    mutate(query)
+    if (query.length > 0) {
+      mutateAsync(query.toString())
+    }
   }
 
   return (

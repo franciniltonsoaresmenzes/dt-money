@@ -1,9 +1,11 @@
 import { Calendar, CaretLeft, CaretRight, Tag } from 'phosphor-react'
-import { useQuery, useQueryClient } from 'react-query'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
 import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { queryClient } from '../../lib/reactQuery'
 import { dateFormatter, priceFormatter } from '../../utils/formatter'
 import { SearchForm } from './components/SearchForm'
 import {
@@ -19,16 +21,23 @@ import {
 } from './styles'
 
 export function Transactions() {
+  const [page, setPage] = useState(1)
+
   const fetchTransactionQuery = useContextSelector(
     TransactionsContext,
     (context) => context.fetchTransactionQuery,
   )
 
-  const { data, isLoading, isSuccess } = useQuery(
-    'todos',
-    () => fetchTransactionQuery(''),
+  const { data, isLoading, isSuccess, isPreviousData, isFetching } = useQuery(
+    ['todos', page],
+    () => fetchTransactionQuery('', page, 5),
     {
-      refetchInterval: 60000,
+      onSuccess: (data) => {
+        queryClient.setQueryData(['todos', 1], data)
+      },
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60,
+      keepPreviousData: true,
     },
   )
 
@@ -95,15 +104,27 @@ export function Transactions() {
 
         <TransactionsTableFooter>
           <TransactionsTableToggleGroup aria-label="Tool bar de paginação">
-            <TransactionsTableToolbarButton disabled>
+            <TransactionsTableToolbarButton
+              disabled={page === 1}
+              onClick={() => setPage((PrevPages) => PrevPages - 1)}
+            >
               <CaretLeft size={24} weight="bold" />
             </TransactionsTableToolbarButton>
-            <TableGroupNumber defaultValue="1" type="single">
-              <TablePaginationNumber value="1">1</TablePaginationNumber>
-              <TablePaginationNumber value="2">2</TablePaginationNumber>
-              <TablePaginationNumber value="3">3</TablePaginationNumber>
+            <TableGroupNumber value={page.toString()} type="single">
+              <TablePaginationNumber value={page.toString()}>
+                {page}
+              </TablePaginationNumber>
+              <TablePaginationNumber value={(page + 2).toString()}>
+                {page + 1}
+              </TablePaginationNumber>
+              <TablePaginationNumber value={(page + 2).toString()}>
+                {page + 2}
+              </TablePaginationNumber>
             </TableGroupNumber>
-            <TransactionsTableToolbarButton>
+            <TransactionsTableToolbarButton
+              disabled={isPreviousData || data?.length === 0 || isFetching}
+              onClick={() => setPage((PrevPages) => PrevPages + 1)}
+            >
               <CaretRight size={24} weight="bold" />
             </TransactionsTableToolbarButton>
           </TransactionsTableToggleGroup>

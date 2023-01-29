@@ -1,12 +1,11 @@
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { ThemeProvider } from 'styled-components'
 import { TransactionsProvider } from './contexts/TransactionsContext'
+import { queryClient } from './lib/reactQuery'
 import { Transactions } from './pages/Transactions'
 import { GlobalStyles } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
-
-const queryClient = new QueryClient()
 
 export function App() {
   return (

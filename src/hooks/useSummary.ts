@@ -1,6 +1,6 @@
-import { useContextSelector } from 'use-context-selector'
-import { useQuery } from 'react-query'
 import { useMemo } from 'react'
+import { useQuery } from 'react-query'
+import { useContextSelector } from 'use-context-selector'
 import { TransactionsContext } from '../contexts/TransactionsContext'
 
 export function useSummary() {
@@ -8,7 +8,11 @@ export function useSummary() {
     TransactionsContext,
     (context) => context.fetchTransactionQuery,
   )
-  const { data } = useQuery('todos', () => fetchTransactionQuery())
+
+  const { data } = useQuery(['todos', 1], () => fetchTransactionQuery(), {
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 60,
+  })
 
   const summary = useMemo(
     () =>
