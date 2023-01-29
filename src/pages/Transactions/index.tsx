@@ -1,5 +1,5 @@
 import { Calendar, CaretLeft, CaretRight, Tag } from 'phosphor-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
@@ -28,20 +28,22 @@ export function Transactions() {
     (context) => context.fetchTransactionQuery,
   )
 
-  const { data, isLoading, isSuccess, isPreviousData, isFetching } = useQuery(
-    ['todos', page],
-    () => fetchTransactionQuery('', page, 5),
-    {
+  const { data, isLoading, isSuccess, isPreviousData, isFetching, refetch } =
+    useQuery(['todos', 1], () => fetchTransactionQuery('', page, 5), {
       onSuccess: (data) => {
         queryClient.setQueryData(['todos', 1], data)
       },
       refetchOnWindowFocus: false,
-      staleTime: 1000 * 60,
+      staleTime: 1000 * 5,
       keepPreviousData: true,
-    },
-  )
+    })
+  useEffect(() => {
+    refetch()
+  }, [page])
 
   const { innerWidth } = window
+
+  console.log('rederizou')
 
   return (
     <div>
@@ -101,34 +103,46 @@ export function Transactions() {
             </TransactionsTableMobile>
           )}
         </TransactionsTable>
-
-        <TransactionsTableFooter>
-          <TransactionsTableToggleGroup aria-label="Tool bar de paginação">
-            <TransactionsTableToolbarButton
-              disabled={page === 1}
-              onClick={() => setPage((PrevPages) => PrevPages - 1)}
-            >
-              <CaretLeft size={24} weight="bold" />
-            </TransactionsTableToolbarButton>
-            <TableGroupNumber value={page.toString()} type="single">
-              <TablePaginationNumber value={page.toString()}>
-                {page}
-              </TablePaginationNumber>
-              <TablePaginationNumber value={(page + 2).toString()}>
-                {page + 1}
-              </TablePaginationNumber>
-              <TablePaginationNumber value={(page + 2).toString()}>
-                {page + 2}
-              </TablePaginationNumber>
-            </TableGroupNumber>
-            <TransactionsTableToolbarButton
-              disabled={isPreviousData || data?.length === 0 || isFetching}
-              onClick={() => setPage((PrevPages) => PrevPages + 1)}
-            >
-              <CaretRight size={24} weight="bold" />
-            </TransactionsTableToolbarButton>
-          </TransactionsTableToggleGroup>
-        </TransactionsTableFooter>
+        {isSuccess || data!.length < 5 ? (
+          <TransactionsTableFooter>
+            <TransactionsTableToggleGroup aria-label="Tool bar de paginação">
+              <TransactionsTableToolbarButton
+                disabled={page === 1}
+                onClick={() => setPage((PrevPages) => PrevPages - 1)}
+              >
+                <CaretLeft size={24} weight="bold" />
+              </TransactionsTableToolbarButton>
+              <TableGroupNumber value={page.toString()} type="single">
+                <TablePaginationNumber
+                  value={page.toString()}
+                  onClick={() => setPage(page)}
+                >
+                  {page}
+                </TablePaginationNumber>
+                <TablePaginationNumber
+                  value={(page + 1).toString()}
+                  onClick={() => setPage(page + 1)}
+                  disabled={isPreviousData || data?.length === 0 || isFetching}
+                >
+                  {page + 1}
+                </TablePaginationNumber>
+                <TablePaginationNumber
+                  value={(page + 2).toString()}
+                  onClick={() => setPage(page + 2)}
+                  disabled={isPreviousData || data?.length === 0 || isFetching}
+                >
+                  {page + 2}
+                </TablePaginationNumber>
+              </TableGroupNumber>
+              <TransactionsTableToolbarButton
+                disabled={isPreviousData || data?.length === 0 || isFetching}
+                onClick={() => setPage((PrevPages) => PrevPages + 1)}
+              >
+                <CaretRight size={24} weight="bold" />
+              </TransactionsTableToolbarButton>
+            </TransactionsTableToggleGroup>
+          </TransactionsTableFooter>
+        ) : null}
       </TransactionsContainer>
     </div>
   )

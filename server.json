@@ -167,6 +167,14 @@
       "type": "income",
       "createdAt": "2023-01-29T00:27:08.862Z",
       "id": 21
+    },
+    {
+      "description": "Salario",
+      "category": "a",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-29T01:34:04.651Z",
+      "id": 22
     }
   ]
 }

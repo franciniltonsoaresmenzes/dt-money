@@ -1,18 +1,17 @@
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
-import { useContextSelector } from 'use-context-selector'
-import { TransactionsContext } from '../contexts/TransactionsContext'
+import { queryClient } from '../lib/reactQuery'
+
+interface TransactionsType {
+  id: number
+  description: string
+  type: 'income' | 'outcome'
+  price: number
+  category: string
+  createdAt: string
+}
 
 export function useSummary() {
-  const fetchTransactionQuery = useContextSelector(
-    TransactionsContext,
-    (context) => context.fetchTransactionQuery,
-  )
-
-  const { data } = useQuery(['todos', 1], () => fetchTransactionQuery(), {
-    refetchOnWindowFocus: false,
-    staleTime: 1000 * 60,
-  })
+  const data = queryClient.getQueryData<TransactionsType[]>(['todos', 1])
 
   const summary = useMemo(
     () =>
