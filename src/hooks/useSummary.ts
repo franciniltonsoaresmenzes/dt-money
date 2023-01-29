@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { useContextSelector } from 'use-context-selector'
 import { TransactionsContext } from '../contexts/TransactionsContext'
@@ -15,10 +15,6 @@ export function useSummary() {
     refetchOnWindowFocus: false,
     staleTime: 1000 * 50,
   })
-
-  useEffect(() => {
-    refetch()
-  }, [refetch, data])
 
   const summary = useMemo(
     () =>
@@ -41,6 +37,9 @@ export function useSummary() {
       ),
     [data],
   )
+  useMemo(() => {
+    refetch()
+  }, [refetch, data])
 
   return summary
 }

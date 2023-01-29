@@ -1,5 +1,5 @@
 import { Calendar, CaretLeft, CaretRight, Tag } from 'phosphor-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
@@ -28,23 +28,20 @@ export function Transactions() {
     (context) => context.fetchTransactionQuery,
   )
 
-  const { data, isLoading, isSuccess, isPreviousData, isFetching, refetch } =
-    useQuery({
-      queryKey: ['todos', page],
-      queryFn: () => fetchTransactionQuery('', page, 5),
-      onSuccess: () => {
-        queryClient.setQueryData(['summary'], [])
-      },
-      refetchOnWindowFocus: false,
-      staleTime: 1000 * 5,
-      keepPreviousData: true,
-    })
-
-  useEffect(() => {
-    refetch()
-  }, [page, refetch])
+  const { data, isLoading, isSuccess, isPreviousData, isFetching } = useQuery({
+    queryKey: ['todos', page],
+    queryFn: () => fetchTransactionQuery('', page, 5),
+    onSuccess: () => {
+      queryClient.setQueryData(['summary'], [])
+    },
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 50,
+    keepPreviousData: true,
+  })
 
   const { innerWidth } = window
+
+  console.log('re')
 
   return (
     <div>
@@ -106,7 +103,10 @@ export function Transactions() {
         </TransactionsTable>
         {isSuccess ? (
           <TransactionsTableFooter>
-            <TransactionsTableToggleGroup aria-label="Tool bar de paginação">
+            <TransactionsTableToggleGroup
+              aria-label="Tool bar de paginação"
+              loop={false}
+            >
               <TransactionsTableToolbarButton
                 disabled={page === 1}
                 onClick={() => setPage((PrevPages) => PrevPages - 1)}
