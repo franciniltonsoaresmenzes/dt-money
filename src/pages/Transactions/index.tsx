@@ -103,7 +103,7 @@ export function Transactions() {
             </TransactionsTableMobile>
           )}
         </TransactionsTable>
-        {isSuccess || data!.length < 5 ? (
+        {isSuccess ? (
           <TransactionsTableFooter>
             <TransactionsTableToggleGroup aria-label="Tool bar de paginação">
               <TransactionsTableToolbarButton
