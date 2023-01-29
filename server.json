@@ -207,6 +207,38 @@
       "type": "income",
       "createdAt": "2023-01-29T21:30:32.957Z",
       "id": 26
+    },
+    {
+      "description": "E",
+      "category": "e",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-29T21:50:30.874Z",
+      "id": 27
+    },
+    {
+      "description": "e",
+      "category": "e",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-29T21:52:41.698Z",
+      "id": 28
+    },
+    {
+      "description": "a",
+      "category": "a",
+      "price": 1000,
+      "type": "income",
+      "createdAt": "2023-01-29T21:53:13.636Z",
+      "id": 29
+    },
+    {
+      "description": "a",
+      "category": "a",
+      "price": 2000,
+      "type": "income",
+      "createdAt": "2023-01-29T21:53:50.942Z",
+      "id": 30
     }
   ]
 }

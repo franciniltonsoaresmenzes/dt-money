@@ -13,7 +13,7 @@ export function useSummary() {
     queryKey: ['summary'],
     queryFn: () => fetchTransactionQuery(),
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 5,
+    staleTime: 1000 * 50,
   })
 
   useEffect(() => {
