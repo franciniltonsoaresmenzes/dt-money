@@ -23,6 +23,14 @@
       "category": "Educação",
       "price": 1980,
       "createdAt": "2023-01-13T23:59:46.529Z"
+    },
+    {
+      "description": "A",
+      "category": "a",
+      "price": 12,
+      "type": "income",
+      "createdAt": "2023-01-29T21:57:07.517Z",
+      "id": 4
     }
   ]
 }
