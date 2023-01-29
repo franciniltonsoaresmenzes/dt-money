@@ -175,6 +175,38 @@
       "type": "income",
       "createdAt": "2023-01-29T01:34:04.651Z",
       "id": 22
+    },
+    {
+      "description": "Energia",
+      "category": "Contas Mensais",
+      "price": 375,
+      "type": "income",
+      "createdAt": "2023-01-29T20:28:41.355Z",
+      "id": 23
+    },
+    {
+      "description": "Agua",
+      "category": "e",
+      "price": 75,
+      "type": "income",
+      "createdAt": "2023-01-29T21:14:28.747Z",
+      "id": 24
+    },
+    {
+      "description": "Salario",
+      "category": "a",
+      "price": 1000,
+      "type": "income",
+      "createdAt": "2023-01-29T21:14:58.926Z",
+      "id": 25
+    },
+    {
+      "description": "Teste",
+      "category": "a",
+      "price": 1000,
+      "type": "income",
+      "createdAt": "2023-01-29T21:30:32.957Z",
+      "id": 26
     }
   ]
 }

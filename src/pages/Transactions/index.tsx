@@ -29,21 +29,22 @@ export function Transactions() {
   )
 
   const { data, isLoading, isSuccess, isPreviousData, isFetching, refetch } =
-    useQuery(['todos', 1], () => fetchTransactionQuery('', page, 5), {
-      onSuccess: (data) => {
-        queryClient.setQueryData(['todos', 1], data)
+    useQuery({
+      queryKey: ['todos', page],
+      queryFn: () => fetchTransactionQuery('', page, 5),
+      onSuccess: () => {
+        queryClient.setQueryData(['summary'], [])
       },
       refetchOnWindowFocus: false,
       staleTime: 1000 * 5,
       keepPreviousData: true,
     })
+
   useEffect(() => {
     refetch()
-  }, [page])
+  }, [page, refetch])
 
   const { innerWidth } = window
-
-  console.log('rederizou')
 
   return (
     <div>

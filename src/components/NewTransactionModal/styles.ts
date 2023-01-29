@@ -24,8 +24,7 @@ export const Content = styled(Dialog.Content)`
   transform: translate(-50%, -50%);
 
   @media screen and (max-width: 862px) {
-    transform: translate(-50%, 0%);
-    bottom: 0;
+    transform: translate(-50%, -30%);
   }
 
   form {
@@ -87,6 +86,10 @@ export const TransactionsType = styled(RadioGroup.Root)`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 0.5rem;
+
+  @media screen and (max-width: 290px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 interface TransactionsTypeButtonType {
