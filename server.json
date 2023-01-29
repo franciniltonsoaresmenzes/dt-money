@@ -41,212 +41,60 @@
       "id": 5
     },
     {
-      "description": "Salario",
-      "category": "Salario",
-      "price": 1500,
-      "type": "income",
-      "createdAt": "2023-01-28T18:30:27.553Z",
-      "id": 6
-    },
-    {
       "description": "Comida",
-      "category": "Alimento",
+      "category": "Alimentação",
       "price": 80,
       "type": "outcome",
       "createdAt": "2023-01-28T18:31:52.248Z",
       "id": 7
     },
     {
-      "description": "Aula",
-      "category": "A",
-      "price": 1800,
-      "type": "outcome",
-      "createdAt": "2023-01-28T18:32:21.312Z",
-      "id": 8
-    },
-    {
-      "description": "A",
-      "category": "a",
-      "price": 1,
-      "type": "outcome",
-      "createdAt": "2023-01-28T18:34:11.995Z",
-      "id": 9
-    },
-    {
-      "description": "b",
-      "category": "b",
-      "price": 1,
+      "id": 8,
+      "description": "Desenvolvimento de site",
       "type": "income",
-      "createdAt": "2023-01-28T18:34:37.951Z",
-      "id": 10
+      "category": "Venda",
+      "price": 15000,
+      "createdAt": "2023-01-13T23:54:46.529Z"
     },
     {
-      "description": "x",
-      "category": "x",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-28T18:35:36.701Z",
-      "id": 11
-    },
-    {
-      "description": "asd",
-      "category": "as",
-      "price": 12,
+      "id": 9,
+      "description": "Hamburger",
       "type": "outcome",
-      "createdAt": "2023-01-28T18:35:52.816Z",
+      "category": "Alimentação",
+      "price": 50,
+      "createdAt": "2023-01-13T23:58:46.529Z"
+    },
+    {
+      "id": 10,
+      "description": "Otavio Lemos",
+      "type": "outcome",
+      "category": "Educação",
+      "price": 1980,
+      "createdAt": "2023-01-13T23:59:46.529Z"
+    },
+    {
+      "id": 11,
+      "description": "Ignite Rocketseat",
+      "type": "outcome",
+      "category": "Educação",
+      "price": 1980,
+      "createdAt": "2023-01-13T23:59:46.529Z"
+    },
+    {
+      "description": "Salario",
+      "category": "Salario",
+      "price": 15000,
+      "type": "income",
+      "createdAt": "2023-01-28T18:29:03.923Z",
       "id": 12
     },
     {
-      "description": "asd",
-      "category": "sd",
-      "price": 23,
-      "type": "income",
-      "createdAt": "2023-01-28T18:36:02.493Z",
-      "id": 13
-    },
-    {
-      "description": "sd",
-      "category": "asd",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-28T18:36:21.948Z",
-      "id": 14
-    },
-    {
-      "description": "sqd",
-      "category": "asd",
-      "price": 12,
+      "description": "Comida",
+      "category": "Alimentação",
+      "price": 80,
       "type": "outcome",
-      "createdAt": "2023-01-28T18:38:30.158Z",
-      "id": 15
-    },
-    {
-      "description": "Salario",
-      "category": "as",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-28T21:30:09.557Z",
-      "id": 16
-    },
-    {
-      "description": "Salario",
-      "category": "as",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-28T21:36:05.266Z",
-      "id": 17
-    },
-    {
-      "description": "12",
-      "category": "as",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-28T22:46:47.044Z",
-      "id": 18
-    },
-    {
-      "description": "12",
-      "category": "as",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-28T22:47:53.894Z",
-      "id": 19
-    },
-    {
-      "description": "Salario",
-      "category": "e",
-      "price": 1233,
-      "type": "income",
-      "createdAt": "2023-01-28T23:12:45.268Z",
-      "id": 20
-    },
-    {
-      "description": "asd12",
-      "category": "a",
-      "price": 1221,
-      "type": "income",
-      "createdAt": "2023-01-29T00:27:08.862Z",
-      "id": 21
-    },
-    {
-      "description": "Salario",
-      "category": "a",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-29T01:34:04.651Z",
-      "id": 22
-    },
-    {
-      "description": "Energia",
-      "category": "Contas Mensais",
-      "price": 375,
-      "type": "income",
-      "createdAt": "2023-01-29T20:28:41.355Z",
-      "id": 23
-    },
-    {
-      "description": "Agua",
-      "category": "e",
-      "price": 75,
-      "type": "income",
-      "createdAt": "2023-01-29T21:14:28.747Z",
-      "id": 24
-    },
-    {
-      "description": "Salario",
-      "category": "a",
-      "price": 1000,
-      "type": "income",
-      "createdAt": "2023-01-29T21:14:58.926Z",
-      "id": 25
-    },
-    {
-      "description": "Teste",
-      "category": "a",
-      "price": 1000,
-      "type": "income",
-      "createdAt": "2023-01-29T21:30:32.957Z",
-      "id": 26
-    },
-    {
-      "description": "E",
-      "category": "e",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-29T21:50:30.874Z",
-      "id": 27
-    },
-    {
-      "description": "e",
-      "category": "e",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-29T21:52:41.698Z",
-      "id": 28
-    },
-    {
-      "description": "a",
-      "category": "a",
-      "price": 1000,
-      "type": "income",
-      "createdAt": "2023-01-29T21:53:13.636Z",
-      "id": 29
-    },
-    {
-      "description": "a",
-      "category": "a",
-      "price": 2000,
-      "type": "income",
-      "createdAt": "2023-01-29T21:53:50.942Z",
-      "id": 30
-    },
-    {
-      "description": "q",
-      "category": "qa",
-      "price": 12,
-      "type": "income",
-      "createdAt": "2023-01-29T21:59:23.481Z",
-      "id": 31
+      "createdAt": "2023-01-28T18:31:52.248Z",
+      "id": 13
     }
   ]
 }
